@@ -815,9 +815,21 @@ body.touring{cursor:none}
     const S = steps.length, pos = p*S*0.999, idx = Math.floor(pos), frac = pos-idx;
     steps.forEach((s,i)=>s.classList.toggle('on', i===idx));
     nodes.forEach(n=>{ const k=+n.dataset.n; n.style.opacity = k<=idx ? 1 : .16; n.classList.toggle('hl', k===idx); });
-    edges.forEach(e=>{ const g=+e.dataset.g; const d = g<idx ? 1 : g===idx ? Math.min(1,frac*1.6) : 0; e.style.strokeDashoffset = 1-d; });
+    edges.forEach(e=>{ 
+      const g=+e.dataset.g; 
+      const d = g<idx ? 1 : g===idx ? Math.min(1,frac*1.6) : 0; 
+      e.style.strokeDashoffset = 1-d;
+      
+      // Control de la flecha:
+      // Si la línea apenas está empezando (d <= 0.05), ocultamos la flecha
+      // Si ya avanzó lo suficiente, la mostramos
+      if (d <= 0.05) {
+        e.style.markerEnd = 'none';
+      } else {
+        e.style.markerEnd = 'url(#flecha)';
+      }
+    });
     anns.forEach(a=>{ a.style.opacity = +a.dataset.g<=idx ? 1 : 0; });
-     flow.classList.toggle('done', p > 0.9);
   }
 
   /* ---------- Progreso e índice ---------- */
