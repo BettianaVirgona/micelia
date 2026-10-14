@@ -183,9 +183,11 @@ svg.mark{fill:currentColor;display:block}
 .flow .node text.s{font-family:var(--mono);font-weight:400;font-size:10px;fill:var(--ink-soft);letter-spacing:.06em}
 .flow .node.hl text.s{fill:var(--on-forest);opacity:.8}
 .flow .node{transition:opacity .4s}
-.flow .edge{fill:none;stroke:var(--wheat);stroke-width:2.2;stroke-linecap:round;marker-end:url(#flecha)}
+.flow .edge{fill:none;stroke:var(--wheat);stroke-width:2.2;stroke-linecap:round}
 .flow .edge.loop{stroke:var(--leaf)}
 .flow .ann{font-family:var(--mono);font-size:10.5px;fill:var(--ink-soft);letter-spacing:.05em;transition:opacity .4s}
+   .flow .edge { marker-end: none; }
+.flow.done .edge { marker-end: url(#flecha); }
 .flow-sec-head{margin-bottom:18px}
 .flow-sec-head h2{font-size:clamp(28px,4vw,46px)}
 @media (max-width:820px){
@@ -815,6 +817,7 @@ body.touring{cursor:none}
     nodes.forEach(n=>{ const k=+n.dataset.n; n.style.opacity = k<=idx ? 1 : .16; n.classList.toggle('hl', k===idx); });
     edges.forEach(e=>{ const g=+e.dataset.g; const d = g<idx ? 1 : g===idx ? Math.min(1,frac*1.6) : 0; e.style.strokeDashoffset = 1-d; });
     anns.forEach(a=>{ a.style.opacity = +a.dataset.g<=idx ? 1 : 0; });
+     flow.classList.toggle('done', p > 0.9);
   }
 
   /* ---------- Progreso e índice ---------- */
