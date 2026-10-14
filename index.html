@@ -70,8 +70,9 @@ svg.mark{fill:currentColor;display:block}
 .hero .tag{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,36px);line-height:1.15;max-width:22ch}
 .hero .sub{max-width:54ch;color:var(--ink-soft)}
 .scrollcue{display:inline-flex;align-items:center;gap:10px}
-.scrollcue::after{content:"";width:1px;height:34px;background:var(--ink-soft);animation:cue 1.8s ease-in-out infinite;transform-origin:top}
-@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.scrollcue svg { color: var(--ink-soft); }
+.scrollcue .arrow-line { stroke-dasharray: 46; animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 0% { stroke-dashoffset: 46; } 50% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -46; } }
 .lockup .logo{animation:grow 1.4s cubic-bezier(.2,.7,.2,1) both}
 .lockup .word{animation:rise 1.2s .25s cubic-bezier(.2,.7,.2,1) both}
 @keyframes grow{from{transform:scale(.6) translateY(20px);opacity:.2}to{transform:none;opacity:1}}
@@ -349,7 +350,11 @@ body.touring{cursor:none}
     </h1>
     <p class="tag">Del subproducto de la molienda a una nueva generación de alimentos.</p>
     <p class="sub">Biofábrica circular que cultiva gírgolas sobre afrechillo de trigo y aprovecha cada etapa del proceso para generar alimentos, mejorar suelos y desarrollar biomateriales.</p>
-    <div class="scrollcue lbl">Bajá para recorrer la propuesta</div>
+    <div class="scrollcue lbl">Bajá para recorrer la propuesta
+  <svg width="12" height="34" viewBox="0 0 12 34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path class="arrow-line" d="M6 0 V32 M2 28 L6 32 L10 28"/>
+  </svg>
+</div>
   </div>
 </header>
 
