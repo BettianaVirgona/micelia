@@ -311,6 +311,27 @@ body.touring{cursor:none}
   .rv,.rv.armed{opacity:1;transform:none;transition:none}
   .scrollcue::after,.lockup .logo,.lockup .word{animation:none}
   .mb div i,.phases .fill{transition:none}
+   /* 11 GRACIAS Y QR */
+.thanks-sec {
+  background: var(--paper-2);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+}
+.qr-card {
+  background: #FFFFFF; /* Fondo blanco forzado para que el QR siempre se lea bien en cámara */
+  padding: 24px;
+  border-radius: 28px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  display: inline-block;
+  border: 1px solid var(--line);
+}
+.qr-card img {
+  display: block;
+  width: 220px;
+  height: auto;
+}
 }
 </style>
 </head>
@@ -681,6 +702,27 @@ body.touring{cursor:none}
 </section>
 </main>
 
+<!-- 11 GRACIAS Y QR -->
+<section id="gracias" class="thanks-sec">
+  <div class="wrap" style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:36px;">
+    
+    <div class="rv">
+      <h2 style="font-size:clamp(36px, 5vw, 64px); line-height:1.1; margin-bottom: 12px; font-family:var(--display); font-weight:700;">¡Muchas gracias!</h2>
+      <p class="lead" style="max-width:44ch; margin:auto;">Escaneá este código para explorar la propuesta interactiva de Micelia desde tu celular.</p>
+    </div>
+
+    <div class="qr-card rv">
+      <!-- Generamos el QR dinámicamente apuntando a tu URL -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://micelia-psi.vercel.app/" alt="Código QR hacia la web de Micelia" width="220" height="220">
+    </div>
+
+    <div class="foot-lock rv" style="justify-content:center; margin-top:8px; margin-bottom:0;">
+      <svg class="mark logo" viewBox="0 0 949 685" aria-hidden="true" style="width:60px;"><use href="#m-logo"/></svg>
+      <svg class="mark word" viewBox="0 0 1392 318" aria-hidden="true" style="width:160px;"><use href="#m-word"/></svg>
+    </div>
+
+  </div>
+</section>
 <footer>
   <div class="wrap">
     <div class="foot-lock" aria-label="Micelia">
